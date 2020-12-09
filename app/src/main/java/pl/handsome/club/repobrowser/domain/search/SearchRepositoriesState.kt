@@ -1,4 +1,4 @@
-package pl.handsome.club.repobrowser.domain
+package pl.handsome.club.repobrowser.domain.search
 
 sealed class SearchRepositoriesState {
 
