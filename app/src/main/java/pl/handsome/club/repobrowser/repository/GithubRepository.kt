@@ -5,6 +5,9 @@ import androidx.lifecycle.asLiveData
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*
 import pl.handsome.club.repobrowser.api.*
+import pl.handsome.club.repobrowser.api.commit.ApiCommitDetails
+import pl.handsome.club.repobrowser.api.details.ApiRepositoryDetails
+import pl.handsome.club.repobrowser.api.search.ApiSearchRepository
 import pl.handsome.club.repobrowser.domain.details.GetCommitsDetailsState
 import pl.handsome.club.repobrowser.domain.details.GetRepositoryDetailsState
 import pl.handsome.club.repobrowser.domain.search.SearchRepositoriesState
@@ -20,7 +23,7 @@ class GithubRepository(
     fun search(partialRepoName: String): LiveData<SearchRepositoriesState> {
         return flow<SearchRepositoriesState> {
             val result = gitHubApi.search(partialRepoName)
-                .map(ApiSearchRepository::toDomain)
+                .let(ApiSearchRepository::toDomain)
                 .let(SearchRepositoriesState::Success)
 
             emit(result)
@@ -51,7 +54,8 @@ class GithubRepository(
         commitsCount: Int
     ): LiveData<GetCommitsDetailsState> {
         return flow<GetCommitsDetailsState> {
-            val result = gitHubApi.getLastCommits(ownerId, repoId, commitsCount)
+            val result = gitHubApi.getLastCommits(ownerId, repoId)
+                .take(commitsCount)
                 .map(ApiCommitDetails::toDomain)
                 .let(GetCommitsDetailsState::Success)
 

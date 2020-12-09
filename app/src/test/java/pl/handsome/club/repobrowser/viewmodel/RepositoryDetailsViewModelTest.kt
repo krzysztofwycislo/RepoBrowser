@@ -4,7 +4,6 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.delay
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -12,8 +11,8 @@ import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
-import pl.handsome.club.repobrowser.api.ApiCommitDetails
 import pl.handsome.club.repobrowser.api.GitHubApi
+import pl.handsome.club.repobrowser.api.commit.ApiCommitDetails
 import pl.handsome.club.repobrowser.api.toDomain
 import pl.handsome.club.repobrowser.data.someApiCommitDetails
 import pl.handsome.club.repobrowser.data.someApiRepositoryDetails
@@ -45,6 +44,10 @@ class RepositoryDetailsViewModelTest {
     @Mock
     private lateinit var commitsObserver: Observer<GetCommitsDetailsState>
 
+    companion object {
+        const val REQUIRED_COMMITS_COUNT = 3
+    }
+
 
     @Before
     fun init() {
@@ -67,7 +70,7 @@ class RepositoryDetailsViewModelTest {
     fun `get repository details - success`() = coroutineRule.runBlockingTest {
         `when`(gitHubApi.getRepository(anyLong(), anyLong()))
             .thenReturn(someApiRepositoryDetails)
-        `when`(gitHubApi.getLastCommits(anyLong(), anyLong(), anyInt()))
+        `when`(gitHubApi.getLastCommits(anyLong(), anyLong()))
             .thenReturn(someApiCommitDetails)
 
         viewModel.getDetails(someSearchRepository)
@@ -76,7 +79,10 @@ class RepositoryDetailsViewModelTest {
         verify(observer).onChanged(GetRepositoryDetailsState.InProgress)
         verify(observer).onChanged(GetRepositoryDetailsState.Success(expectedRepositoryDetails))
 
-        val expectedCommitDetails = someApiCommitDetails.map(ApiCommitDetails::toDomain)
+        val expectedCommitDetails = someApiCommitDetails
+            .take(REQUIRED_COMMITS_COUNT)
+            .map(ApiCommitDetails::toDomain)
+
         verify(commitsObserver).onChanged(GetCommitsDetailsState.InProgress)
         verify(commitsObserver).onChanged(GetCommitsDetailsState.Success(expectedCommitDetails))
     }
@@ -88,7 +94,7 @@ class RepositoryDetailsViewModelTest {
 
             `when`(gitHubApi.getRepository(anyLong(), anyLong()))
                 .thenThrow(exampleException)
-            `when`(gitHubApi.getLastCommits(anyLong(), anyLong(), anyInt()))
+            `when`(gitHubApi.getLastCommits(anyLong(), anyLong()))
                 .thenReturn(someApiCommitDetails)
 
             viewModel.getDetails(someSearchRepository)
@@ -96,7 +102,10 @@ class RepositoryDetailsViewModelTest {
             verify(observer).onChanged(GetRepositoryDetailsState.InProgress)
             verify(observer).onChanged(GetRepositoryDetailsState.Error(exampleException))
 
-            val expectedCommitDetails = someApiCommitDetails.map(ApiCommitDetails::toDomain)
+            val expectedCommitDetails = someApiCommitDetails
+                .take(REQUIRED_COMMITS_COUNT)
+                .map(ApiCommitDetails::toDomain)
+
             verify(commitsObserver).onChanged(GetCommitsDetailsState.InProgress)
             verify(commitsObserver).onChanged(GetCommitsDetailsState.Success(expectedCommitDetails))
         }
@@ -107,7 +116,7 @@ class RepositoryDetailsViewModelTest {
 
         `when`(gitHubApi.getRepository(anyLong(), anyLong()))
             .thenReturn(someApiRepositoryDetails)
-        `when`(gitHubApi.getLastCommits(anyLong(), anyLong(), anyInt()))
+        `when`(gitHubApi.getLastCommits(anyLong(), anyLong()))
             .thenThrow(exampleException)
 
         viewModel.getDetails(someSearchRepository)

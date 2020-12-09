@@ -1,23 +1,25 @@
 package pl.handsome.club.repobrowser.data
 
-import pl.handsome.club.repobrowser.api.ApiCommitDetails
-import pl.handsome.club.repobrowser.api.ApiRepositoryDetails
-import pl.handsome.club.repobrowser.api.ApiSearchRepository
+import pl.handsome.club.repobrowser.api.commit.ApiCommitDetails
+import pl.handsome.club.repobrowser.api.commit.ApiCommitDetailsAuthor
+import pl.handsome.club.repobrowser.api.commit.ApiCommitDetailsCommit
+import pl.handsome.club.repobrowser.api.details.ApiRepositoryDetails
+import pl.handsome.club.repobrowser.api.details.ApiRepositoryDetailsOwner
+import pl.handsome.club.repobrowser.api.search.ApiSearchRepository
 import pl.handsome.club.repobrowser.domain.search.SearchRepository
 
 
-val someApiSearchRepositories = listOf(
-    ApiSearchRepository(1, 1,"Repo1"),
-    ApiSearchRepository(2, 2, "Repo2"),
-    ApiSearchRepository(3, 3, "Repo3")
+val someApiSearchRepository = ApiSearchRepository(1, false, emptyList())
+
+val someSearchRepository = SearchRepository(1, "title", 1, "url", 5)
+
+private val someRepositoryOwner = ApiRepositoryDetailsOwner(1, "login", "avatar")
+val someApiRepositoryDetails = ApiRepositoryDetails(1, "name", someRepositoryOwner, 5)
+
+private val someApiCommitDetail = ApiCommitDetails(
+    ApiCommitDetailsCommit("url", "message"),
+    ApiCommitDetailsAuthor("name", "email")
 )
 
-val someSearchRepository = SearchRepository(1, 1, "test")
-
-val someApiRepositoryDetails = ApiRepositoryDetails(1, 1)
-
-val someApiCommitDetails = listOf(
-    ApiCommitDetails("test message 1"),
-    ApiCommitDetails("test message 2"),
-    ApiCommitDetails("test message 3")
-)
+val someApiCommitDetails =
+    listOf(someApiCommitDetail, someApiCommitDetail, someApiCommitDetail, someApiCommitDetail)

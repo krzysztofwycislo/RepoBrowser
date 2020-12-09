@@ -11,10 +11,10 @@ import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
-import pl.handsome.club.repobrowser.api.ApiSearchRepository
 import pl.handsome.club.repobrowser.api.GitHubApi
+import pl.handsome.club.repobrowser.api.search.ApiSearchRepository
 import pl.handsome.club.repobrowser.api.toDomain
-import pl.handsome.club.repobrowser.data.someApiSearchRepositories
+import pl.handsome.club.repobrowser.data.someApiSearchRepository
 import pl.handsome.club.repobrowser.domain.search.SearchRepositoriesState
 import pl.handsome.club.repobrowser.repository.GithubRepository
 import pl.handsome.club.repobrowser.rule.CoroutineTestRule
@@ -43,8 +43,7 @@ internal class SearchRepositoryViewModelTest {
     fun init() {
         MockitoAnnotations.initMocks(this)
 
-        val githubRepository =
-            GithubRepository(gitHubApi, coroutineTestRule.testCoroutineDispatchers)
+        val githubRepository = GithubRepository(gitHubApi, coroutineTestRule.testCoroutineDispatchers)
         viewModel = SearchRepositoryViewModel(githubRepository)
         viewModel.searchGitRepositoriesState.observeForever(observer)
     }
@@ -56,16 +55,12 @@ internal class SearchRepositoryViewModelTest {
 
     @Test
     fun `search for repositories - success`() = coroutineTestRule.runBlockingTest {
-        `when`(gitHubApi.search(anyString())).thenReturn(someApiSearchRepositories)
+        `when`(gitHubApi.search(anyString())).thenReturn(someApiSearchRepository)
 
         viewModel.search("test")
 
         verify(observer).onChanged(SearchRepositoriesState.InProgress)
-
-        val expectedSearchRepositories = someApiSearchRepositories
-            .map(ApiSearchRepository::toDomain)
-
-        verify(observer).onChanged(SearchRepositoriesState.Success(expectedSearchRepositories))
+        verify(observer).onChanged(SearchRepositoriesState.Success(someApiSearchRepository.toDomain()))
     }
 
     @Test
