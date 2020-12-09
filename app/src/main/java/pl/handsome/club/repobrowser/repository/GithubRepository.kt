@@ -4,11 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*
-import pl.handsome.club.repobrowser.api.ApiRepositoryDetails
-import pl.handsome.club.repobrowser.api.ApiSearchRepository
-import pl.handsome.club.repobrowser.api.GitHubApi
-import pl.handsome.club.repobrowser.api.toDomain
-import pl.handsome.club.repobrowser.domain.*
+import pl.handsome.club.repobrowser.api.*
+import pl.handsome.club.repobrowser.domain.details.GetCommitsDetailsState
 import pl.handsome.club.repobrowser.domain.details.GetRepositoryDetailsState
 import pl.handsome.club.repobrowser.domain.search.SearchRepositoriesState
 import pl.handsome.club.repobrowser.util.AppCoroutineDispatchers
@@ -44,6 +41,24 @@ class GithubRepository(
         }
             .onStart { emit(GetRepositoryDetailsState.InProgress) }
             .catch { emit(GetRepositoryDetailsState.Error(it)) }
+            .flowOn(dispatchers.io)
+            .asLiveData()
+    }
+
+    fun getLastCommits(
+        ownerId: Long,
+        repoId: Long,
+        commitsCount: Int
+    ): LiveData<GetCommitsDetailsState> {
+        return flow<GetCommitsDetailsState> {
+            val result = gitHubApi.getLastCommits(ownerId, repoId, commitsCount)
+                .map(ApiCommitDetails::toDomain)
+                .let(GetCommitsDetailsState::Success)
+
+            emit(result)
+        }
+            .onStart { emit(GetCommitsDetailsState.InProgress) }
+            .catch { emit(GetCommitsDetailsState.Error(it)) }
             .flowOn(dispatchers.io)
             .asLiveData()
     }

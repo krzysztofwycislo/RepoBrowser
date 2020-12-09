@@ -17,11 +17,27 @@ class RepositoryDetailsViewModel(
     private val repositoryToLoad = MutableLiveData<SearchRepository>()
 
     val getRepositoryDetailsState = repositoryToLoad.switchMap {
-        liveData { emitSource(githubRepository.getDetails(it.ownerId, it.id)) }
+        liveData {
+            emitSource(
+                githubRepository.getDetails(it.ownerId, it.id)
+            )
+        }
+    }
+
+    val lastCommits = repositoryToLoad.switchMap {
+        liveData {
+            emitSource(
+                githubRepository.getLastCommits(it.ownerId, it.id, LAST_COMMITS_COUNT)
+            )
+        }
     }
 
     fun getDetails(searchRepository: SearchRepository) {
         repositoryToLoad.value = searchRepository
+    }
+
+    companion object {
+        const val LAST_COMMITS_COUNT = 3
     }
 
 }

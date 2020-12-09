@@ -1,5 +1,6 @@
 package pl.handsome.club.repobrowser.data
 
+import pl.handsome.club.repobrowser.api.ApiCommitDetails
 import pl.handsome.club.repobrowser.api.ApiRepositoryDetails
 import pl.handsome.club.repobrowser.api.ApiSearchRepository
 import pl.handsome.club.repobrowser.domain.search.SearchRepository
@@ -13,4 +14,10 @@ val someApiSearchRepositories = listOf(
 
 val someSearchRepository = SearchRepository(1, 1, "test")
 
-val someApiRepositoryDetails = ApiRepositoryDetails(1)
+val someApiRepositoryDetails = ApiRepositoryDetails(1, 1)
+
+val someApiCommitDetails = listOf(
+    ApiCommitDetails("test message 1"),
+    ApiCommitDetails("test message 2"),
+    ApiCommitDetails("test message 3")
+)
