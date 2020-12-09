@@ -41,22 +41,25 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     // general
-    implementation "androidx.core:core-ktx:1.3.2"
+    implementation "androidx.core:core-ktx:$androidx_core_ktx_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$androidx_lifecycle_version"
 
-    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation "androidx.appcompat:appcompat:$androidx_appcompat_version"
 
     // design
-    implementation 'com.google.android.material:material:1.2.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation "com.google.android.material:material:$google_material_version"
+    implementation "androidx.constraintlayout:constraintlayout:$androidx_constraintlayout_version"
 
     // navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_component_version"
     implementation "androidx.navigation:navigation-ui-ktx:$navigation_component_version"
 
+    // network
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+
     // test
-    testImplementation 'junit:junit:4.13.1'
-    testImplementation 'org.mockito:mockito-core:3.3.3'
+    testImplementation "junit:junit:$junit_version"
+    testImplementation "org.mockito:mockito-core:$mockito_core_version"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinx_coroutines_test_version"
     testImplementation "androidx.arch.core:core-testing:$androidx_arch_core_testing_version"
 

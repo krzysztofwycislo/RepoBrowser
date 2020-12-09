@@ -16,6 +16,7 @@ class RepositoryDetailsViewModel(
 
     private val repositoryToLoad = MutableLiveData<SearchRepository>()
 
+
     val getRepositoryDetailsState = repositoryToLoad.switchMap {
         liveData {
             emitSource(
