@@ -23,7 +23,7 @@ import java.lang.IllegalStateException
 
 @ExperimentalCoroutinesApi
 @FlowPreview
-internal class SearchRepositoryListViewModelTest {
+internal class SearchRepositoryViewModelTest {
 
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -31,7 +31,7 @@ internal class SearchRepositoryListViewModelTest {
     @get:Rule
     val coroutineTestRule = CoroutineTestRule()
 
-    private lateinit var viewModel: GitRepositoryListViewModel
+    private lateinit var viewModel: SearchRepositoryViewModel
 
     @Mock
     private lateinit var gitHubApi: GitHubApi
@@ -45,13 +45,13 @@ internal class SearchRepositoryListViewModelTest {
         MockitoAnnotations.initMocks(this)
 
         val githubRepository = GithubRepository(gitHubApi, coroutineTestRule.testCoroutineDispatchers)
-        viewModel = GitRepositoryListViewModel(githubRepository)
-        viewModel.getSearchGitRepositoriesState().observeForever(observer)
+        viewModel = SearchRepositoryViewModel(githubRepository)
+        viewModel.searchGitRepositoriesState.observeForever(observer)
     }
 
     @After
     fun cleanup() {
-        viewModel.getSearchGitRepositoriesState().removeObserver(observer)
+        viewModel.searchGitRepositoriesState.removeObserver(observer)
     }
 
     @Test

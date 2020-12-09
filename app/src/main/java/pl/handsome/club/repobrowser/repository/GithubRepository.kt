@@ -1,5 +1,7 @@
 package pl.handsome.club.repobrowser.repository
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.asLiveData
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*
 import pl.handsome.club.repobrowser.api.ApiSearchRepository
@@ -15,7 +17,7 @@ class GithubRepository(
     private val dispatchers: AppCoroutineDispatchers
 ) {
 
-    fun search(partialRepoName: String): Flow<SearchRepositoriesState> {
+    fun search(partialRepoName: String): LiveData<SearchRepositoriesState> {
         return flow<SearchRepositoriesState> {
             val repositories = searchOnApi(partialRepoName)
             emit(SearchRepositoriesState.Success(repositories))
@@ -23,6 +25,7 @@ class GithubRepository(
             .onStart { emit(SearchRepositoriesState.InProgress) }
             .catch { emit(SearchRepositoriesState.Error(it)) }
             .flowOn(dispatchers.io)
+            .asLiveData()
     }
 
     private suspend fun searchOnApi(partialRepoName: String) =
