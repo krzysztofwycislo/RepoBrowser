@@ -10,7 +10,7 @@ import retrofit2.http.Query
 interface GitHubApi {
 
     @GET("/search/repositories")
-    suspend fun search(@Query("") partialRepoName: String): ApiSearchRepository
+    suspend fun search(@Query("q") partialRepoName: String): ApiSearchRepository
 
     @GET("/repos/{owner}/{repo}")
     suspend fun getRepository(

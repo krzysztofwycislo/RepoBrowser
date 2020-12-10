@@ -3,10 +3,13 @@ package pl.handsome.club.repobrowser.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import pl.handsome.club.repobrowser.api.GitHubApi
 import pl.handsome.club.repobrowser.repository.GithubRepository
 import pl.handsome.club.repobrowser.util.AppCoroutineDispatchers
 import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 
 
 // TODO temporary solution
@@ -28,10 +31,18 @@ object ViewModelFactory : ViewModelProvider.Factory {
     }
 
     private fun createGithubRepository(): GithubRepository {
+        val logging = HttpLoggingInterceptor()
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY)
+
+        val httpClient = OkHttpClient.Builder()
+        httpClient.addInterceptor(logging)
+
         val dispatchers = AppCoroutineDispatchers()
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.github.com/")
-            .build();
+            .addConverterFactory(MoshiConverterFactory.create())
+            .client(httpClient.build())
+            .build()
 
         val gitHubApi = retrofit.create(GitHubApi::class.java)
         return GithubRepository(gitHubApi, dispatchers)
