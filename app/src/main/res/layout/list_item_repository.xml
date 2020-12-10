@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="9dp"
+    android:background="@drawable/repository_list_item_background"
+    android:padding="@dimen/normal_100">
+
+    <ImageView
+        android:id="@+id/authorAvatarImage"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:contentDescription="@string/author_avatar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@color/black" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/normal_100"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/authorAvatarImage"
+        app:layout_constraintEnd_toStartOf="@+id/forwardIcon"
+        app:layout_constraintStart_toEndOf="@id/authorAvatarImage"
+        app:layout_constraintTop_toTopOf="@+id/authorAvatarImage">
+
+        <TextView
+            android:id="@+id/repoTitleTextView"
+            style="@style/RepositoryListItemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/SFProTextSemiBold"
+            android:textColor="#000000"
+            tools:text="Repo Title" />
+
+        <TextView
+            android:id="@+id/starsCountTextView"
+            style="@style/RepositoryListItemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/small_50"
+            android:fontFamily="@font/SFProTextRegular"
+            android:textColor="#9e9e9e"
+            app:drawableStartCompat="@drawable/ic_star_icon"
+            tools:text="997" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/forwardIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/author_avatar"
+        android:src="@drawable/ic_forward_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/authorAvatarImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/authorAvatarImage" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

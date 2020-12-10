@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--   LAYOUT   -->
+    <dimen name="small_50">4dp</dimen>
+    <dimen name="small_100">8dp</dimen>
+    <dimen name="small_150">12dp</dimen>
+    <dimen name="small_175">14dp</dimen>
+
+    <dimen name="normal_100">16dp</dimen>
+    <dimen name="normal_125">20dp</dimen>
+
+    <dimen name="large_100">30dp</dimen>
+    <dimen name="large_125">36dp</dimen>
+
+
+    <!--  TEXT   -->
+    <dimen name="text_small_100">8sp</dimen>
+    <dimen name="text_small_125">10sp</dimen>
+
+    <dimen name="text_regular_100">16sp</dimen>
+    <dimen name="text_regular_125">20sp</dimen>
+
+    <dimen name="text_large_100">34sp</dimen>
+
+</resources>
