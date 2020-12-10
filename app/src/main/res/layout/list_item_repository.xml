@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/listItemContainer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="9dp"
@@ -33,7 +34,6 @@
             style="@style/RepositoryListItemText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/SFProTextSemiBold"
             android:textColor="#000000"
             tools:text="Repo Title" />
 
@@ -43,7 +43,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawablePadding="@dimen/small_50"
-            android:fontFamily="@font/SFProTextRegular"
             android:textColor="#9e9e9e"
             app:drawableStartCompat="@drawable/ic_star_icon"
             tools:text="997" />

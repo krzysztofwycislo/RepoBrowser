@@ -7,7 +7,7 @@
     android:paddingHorizontal="@dimen/normal_100">
 
     <TextView
-        android:id="@+id/searchTextView"
+        android:id="@+id/searchTitleTextView"
         style="@style/SearchTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,16 +15,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/repositorySearchView"
+    <EditText
+        android:id="@+id/repositorySearchEditText"
         style="@style/SearchViewStyle"
         android:layout_width="match_parent"
         android:layout_height="36dp"
         android:layout_marginTop="@dimen/small_175"
+        android:drawableStart="@drawable/ic_search_icon"
+        android:drawablePadding="10dp"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:paddingHorizontal="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchTextView"
-        app:searchIcon="@drawable/ic_search_icon" />
+        app:layout_constraintTop_toBottomOf="@+id/searchTitleTextView" />
 
     <TextView
         android:id="@+id/repositoriesListTitleTextView"
@@ -34,9 +38,10 @@
         android:layout_marginTop="30dp"
         android:text="@string/repositories"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/repositorySearchView" />
+        app:layout_constraintTop_toBottomOf="@+id/repositorySearchEditText" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/repositoryRecyclerList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="18dp"
