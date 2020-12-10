@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main_nav_graph"
-    app:startDestination="@id/repositoryListFragment">
+    app:startDestination="@id/searchForRepositoryFragment">
 
     <fragment
-        android:id="@+id/repositoryListFragment"
-        android:name="pl.handsome.club.repobrowser.ui.RepositoryListFragment"
-        android:label="RepositoryListFragment" >
+        android:id="@+id/searchForRepositoryFragment"
+        android:name="pl.handsome.club.repobrowser.ui.SearchForRepositoryFragment"
+        android:label="SearchForRepositoryFragment" >
         <action
             android:id="@+id/to_repositoryDetailsFragment"
             app:destination="@id/repositoryDetailsFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/repositoryDetailsFragment"
         android:name="pl.handsome.club.repobrowser.ui.RepositoryDetailsFragment"
         android:label="RepositoryDetailsFragment" />
+
 </navigation>

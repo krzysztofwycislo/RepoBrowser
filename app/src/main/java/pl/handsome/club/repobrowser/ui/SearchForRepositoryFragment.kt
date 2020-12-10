@@ -8,7 +8,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.fragment_repository_list.*
+import kotlinx.android.synthetic.main.fragment_search_for_repository.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import pl.handsome.club.repobrowser.R
 import pl.handsome.club.repobrowser.domain.search.SearchRepositoriesState
@@ -22,7 +22,7 @@ import pl.handsome.club.repobrowser.viewmodel.ViewModelFactory
 
 
 @ExperimentalCoroutinesApi
-class RepositoryListFragment : Fragment(R.layout.fragment_repository_list) {
+class SearchForRepositoryFragment : Fragment(R.layout.fragment_search_for_repository) {
 
     private val searchRepositoryViewModel: SearchRepositoryViewModel by viewModels { ViewModelFactory }
     private val repositoryDetailsViewModel: RepositoryDetailsViewModel by activityViewModels { ViewModelFactory }

@@ -55,7 +55,8 @@ internal class SearchRepositoryViewModelTest {
 
     @Test
     fun `search for repositories - success`() = coroutineTestRule.runBlockingTest {
-        `when`(gitHubApi.search(anyString())).thenReturn(someApiSearchRepository)
+        `when`(gitHubApi.search(anyString(), anyString(), anyString()))
+            .thenReturn(someApiSearchRepository)
 
         viewModel.search("test")
 
@@ -74,7 +75,8 @@ internal class SearchRepositoryViewModelTest {
     fun `load git repositories - api error`() = coroutineTestRule.runBlockingTest {
         val exampleException = IllegalStateException()
 
-        `when`(gitHubApi.search(anyString())).thenThrow(exampleException)
+        `when`(gitHubApi.search(anyString(), anyString(), anyString()))
+            .thenThrow(exampleException)
 
         viewModel.search("test")
 
