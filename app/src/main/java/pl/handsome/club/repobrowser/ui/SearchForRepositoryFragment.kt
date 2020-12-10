@@ -16,6 +16,7 @@ import pl.handsome.club.repobrowser.domain.search.SearchRepository
 import pl.handsome.club.repobrowser.ui.adapter.RepositoryRecyclerListAdapter
 import pl.handsome.club.repobrowser.util.DebounceTextWatcher
 import pl.handsome.club.repobrowser.util.logError
+import pl.handsome.club.repobrowser.util.safeNavigate
 import pl.handsome.club.repobrowser.viewmodel.RepositoryDetailsViewModel
 import pl.handsome.club.repobrowser.viewmodel.SearchRepositoryViewModel
 import pl.handsome.club.repobrowser.viewmodel.ViewModelFactory
@@ -64,10 +65,9 @@ class SearchForRepositoryFragment : Fragment(R.layout.fragment_search_for_reposi
             .submitList(searchRepositories)
     }
 
-    // TODO safe navigation
     private fun onRepositorySelected(searchRepository: SearchRepository) {
         repositoryDetailsViewModel.getDetails(searchRepository)
-        findNavController().navigate(R.id.to_repositoryDetailsFragment)
+        findNavController().safeNavigate(R.id.to_repositoryDetailsFragment)
     }
 
     private fun showError(throwable: Throwable) {
