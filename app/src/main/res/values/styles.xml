@@ -11,6 +11,8 @@
 
     <style name="SearchViewStyle">
         <item name="android:background">@drawable/search_view_background</item>
+        <item name="android:drawableStart">@drawable/ic_search_icon</item>
+        <item name="android:drawablePadding">10dp</item>
     </style>
 
     <style name="SearchTitleTextView">

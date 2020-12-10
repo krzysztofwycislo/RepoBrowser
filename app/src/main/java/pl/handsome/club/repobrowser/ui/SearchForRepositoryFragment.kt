@@ -53,8 +53,12 @@ class SearchForRepositoryFragment : Fragment(R.layout.fragment_search_for_reposi
     }
 
     private fun onSearchStateChanged(state: SearchRepositoriesState?) {
+        if(state !is SearchRepositoriesState.InProgress) {
+            progressBar.hide()
+        }
+
         when (state) {
-            is SearchRepositoriesState.InProgress -> Unit
+            is SearchRepositoriesState.InProgress -> progressBar.show()
             is SearchRepositoriesState.Success -> onSearchSuccess(state.searchRepositories)
             is SearchRepositoriesState.Error -> showError(state.throwable)
         }
