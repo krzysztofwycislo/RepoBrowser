@@ -14,6 +14,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:contentDescription="@string/author_avatar"
+        android:background="@drawable/author_avatar_background_rounding"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@color/black" />

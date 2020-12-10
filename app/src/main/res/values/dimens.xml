@@ -23,4 +23,6 @@
 
     <dimen name="text_large_100">34sp</dimen>
 
+    <dimen name="author_avatar_corner_radius">10dp</dimen>
+
 </resources>

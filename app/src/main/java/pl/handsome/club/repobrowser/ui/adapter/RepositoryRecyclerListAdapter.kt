@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.list_item_repository.view.*
 import pl.handsome.club.repobrowser.R
 import pl.handsome.club.repobrowser.domain.search.SearchRepository
 
+
 class RepositoryRecyclerListAdapter(
     private val onItemClick: (SearchRepository) -> Unit
 ) : ListAdapter<SearchRepository, RepositoryRecyclerListAdapter.ViewHolder>(DiffCallback()) {
@@ -35,6 +36,7 @@ class RepositoryRecyclerListAdapter(
 
 
         fun bind(searchRepository: SearchRepository) = with(searchRepository) {
+            authorAvatarImage.clipToOutline = true // enables rounding to background
             loadImage(ownerAvatarUrl)
             repoTitleTextView.text = title
             starsCountTextView.text = starsCount.toString()
