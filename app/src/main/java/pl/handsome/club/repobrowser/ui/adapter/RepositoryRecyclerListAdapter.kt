@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.list_item_repository.view.*
 import pl.handsome.club.repobrowser.R
 import pl.handsome.club.repobrowser.domain.search.SearchRepository
@@ -42,18 +43,26 @@ class RepositoryRecyclerListAdapter(
         }
 
         private fun loadImage(ownerAvatarUrl: String) {
-            // TODO
+            Glide.with(itemView)
+                .load(ownerAvatarUrl)
+                .into(authorAvatarImage)
         }
 
     }
 
     class DiffCallback : DiffUtil.ItemCallback<SearchRepository>() {
 
-        override fun areItemsTheSame(oldItem: SearchRepository, newItem: SearchRepository): Boolean {
+        override fun areItemsTheSame(
+            oldItem: SearchRepository,
+            newItem: SearchRepository
+        ): Boolean {
             return oldItem.id == newItem.id && oldItem.ownerId == newItem.ownerId
         }
 
-        override fun areContentsTheSame(oldItem: SearchRepository, newItem: SearchRepository): Boolean {
+        override fun areContentsTheSame(
+            oldItem: SearchRepository,
+            newItem: SearchRepository
+        ): Boolean {
             return oldItem == newItem
         }
 
