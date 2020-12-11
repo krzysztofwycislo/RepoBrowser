@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -16,139 +16,156 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/repositoryDetailsContent"
+    <ScrollView
         android:layout_width="match_parent"
-        android:animateLayoutChanges="true"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/authorAvatarImage"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/repositoryDetailsContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/author_avatar"
-            android:minHeight="250dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:animateLayoutChanges="true"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <View
-            android:background="@color/image_transparent_black_overlay"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toTopOf="@+id/authorAvatarImage"
-            app:layout_constraintBottom_toBottomOf="@+id/authorAvatarImage"
-            app:layout_constraintStart_toStartOf="@+id/authorAvatarImage"
-            app:layout_constraintEnd_toEndOf="@+id/authorAvatarImage"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/beginVerticalGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="20dp" />
 
-        <Button
-            android:id="@+id/backButton"
-            style="@style/BackButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="@string/back"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/endVerticalGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="20dp" />
 
-        <TextView
-            android:id="@+id/repoByText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:letterSpacing="-0.02"
-            android:lineSpacingExtra="5sp"
-            android:text="@string/repo_by"
-            android:textAllCaps="true"
-            android:textColor="@color/white_semi_transparent"
-            android:textSize="15sp"
-            android:paddingHorizontal="@dimen/small_100"
-            android:textStyle="normal"
-            app:layout_constraintBottom_toTopOf="@id/repoAuthorNameText"
-            app:layout_constraintStart_toStartOf="@+id/numberOfStarsText" />
+            <ImageView
+                android:id="@+id/authorAvatarImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/author_avatar"
+                android:minHeight="250dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/repoAuthorNameText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="6dp"
-            android:paddingHorizontal="@dimen/small_100"
-            android:letterSpacing="0.01"
-            android:lineSpacingExtra="6sp"
-            android:textColor="@color/white"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/numberOfStarsText"
-            app:layout_constraintStart_toStartOf="@+id/numberOfStarsText"
-            tools:text="Repo Author Name" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/image_transparent_black_overlay"
+                app:layout_constraintBottom_toBottomOf="@+id/authorAvatarImage"
+                app:layout_constraintEnd_toEndOf="@+id/authorAvatarImage"
+                app:layout_constraintStart_toStartOf="@+id/authorAvatarImage"
+                app:layout_constraintTop_toTopOf="@+id/authorAvatarImage" />
 
-        <TextView
-            android:id="@+id/numberOfStarsText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginBottom="22dp"
-            android:drawablePadding="5dp"
-            android:paddingHorizontal="@dimen/small_100"
-            android:letterSpacing="-0.01"
-            android:lineSpacingExtra="5sp"
-            android:textColor="@color/white_semi_transparent"
-            android:textSize="13sp"
-            android:textStyle="normal"
-            app:drawableStartCompat="@drawable/ic_star_icon_filled"
-            app:drawableTint="@color/white_semi_transparent"
-            app:layout_constraintBottom_toBottomOf="@id/authorAvatarImage"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="Number of Stars (234)" />
+            <Button
+                android:id="@+id/backButton"
+                style="@style/BackButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/repoTitleText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:letterSpacing="-0.02"
-            android:lineSpacingExtra="5sp"
-            android:textColor="#000000"
-            android:textSize="17sp"
-            android:textStyle="normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/authorAvatarImage"
-            tools:text="Repo Title" />
+            <TextView
+                android:id="@+id/repoByText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="5sp"
+                android:text="@string/repo_by"
+                android:textAllCaps="true"
+                android:textColor="@color/white_semi_transparent"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toTopOf="@id/repoAuthorNameText"
+                app:layout_constraintStart_toStartOf="@+id/beginVerticalGuideline" />
 
-        <Button
-            style="@style/ViewOnlineButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:text="@string/view_online"
-            app:layout_constraintBottom_toBottomOf="@id/repoTitleText"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/repoTitleText" />
+            <TextView
+                android:id="@+id/repoAuthorNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:letterSpacing="0.01"
+                android:lineSpacingExtra="6sp"
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/numberOfStarsText"
+                app:layout_constraintStart_toStartOf="@+id/beginVerticalGuideline"
+                tools:text="Repo Author Name" />
 
-        <!--    <androidx.fragment.app.FragmentContainerView-->
-        <!--        android:id="@+id/commitsFragment"-->
-        <!--        android:name=""-->
-        <!--        android:layout_width="match_parent"-->
-        <!--        android:layout_height="0dp"-->
-        <!--        app:layout_constraintBottom_toTopOf="@+id/shareRepoButton"-->
-        <!--        app:layout_constraintStart_toStartOf="parent"-->
-        <!--        app:layout_constraintTop_toBottomOf="@id/repoTitleText" />-->
+            <TextView
+                android:id="@+id/numberOfStarsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="22dp"
+                android:drawablePadding="5dp"
+                android:letterSpacing="-0.01"
+                android:lineSpacingExtra="5sp"
+                android:textColor="@color/white_semi_transparent"
+                android:textSize="13sp"
+                android:textStyle="normal"
+                app:drawableStartCompat="@drawable/ic_star_icon_filled"
+                app:drawableTint="@color/white_semi_transparent"
+                app:layout_constraintBottom_toBottomOf="@id/authorAvatarImage"
+                app:layout_constraintStart_toStartOf="@+id/beginVerticalGuideline"
+                tools:text="Number of Stars (234)" />
 
-        <Button
-            android:id="@+id/shareRepoButton"
-            style="@style/ShareRepoButtonStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="44dp"
-            android:paddingVertical="14dp"
-            android:text="@string/share_repo_button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/authorEmailText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="5sp"
+                android:textColor="#000000"
+                android:textSize="17sp"
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="@+id/beginVerticalGuideline"
+                app:layout_constraintTop_toBottomOf="@id/authorAvatarImage"
+                tools:text="Repo Title" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                style="@style/ViewOnlineButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/view_online"
+                app:layout_constraintBottom_toBottomOf="@id/authorEmailText"
+                app:layout_constraintEnd_toEndOf="@+id/endVerticalGuideline"
+                app:layout_constraintTop_toTopOf="@id/authorEmailText" />
+
+            <fragment
+                android:id="@+id/commitsFragment"
+                android:name="pl.handsome.club.repobrowser.ui.CommitsHistoryListFragment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="24dp"
+                app:layout_constraintBottom_toTopOf="@+id/shareRepoButton"
+                app:layout_constraintEnd_toEndOf="@+id/endVerticalGuideline"
+                app:layout_constraintStart_toStartOf="@+id/beginVerticalGuideline"
+                app:layout_constraintTop_toBottomOf="@id/authorEmailText"
+                tools:layout="@layout/fragment_commits_history" />
+
+            <Button
+                android:id="@+id/shareRepoButton"
+                style="@style/ShareRepoButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="44dp"
+                android:paddingVertical="14dp"
+                android:text="@string/share_repo_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/endVerticalGuideline"
+                app:layout_constraintStart_toStartOf="@+id/beginVerticalGuideline" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

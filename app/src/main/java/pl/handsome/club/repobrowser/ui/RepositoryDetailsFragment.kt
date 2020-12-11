@@ -30,9 +30,6 @@ class RepositoryDetailsFragment : Fragment(R.layout.fragment_repository_details)
         repositoryDetailsViewModel.repositoryDetailsLoadState
             .observe(viewLifecycleOwner, ::onRepositoryDetailsLoadStateChanged)
 
-        repositoryDetailsViewModel.lastCommitsLoadState
-            .observe(viewLifecycleOwner, ::onLastCommitsLoadStateChanged)
-
         backButton.setOnClickListener {
             findNavController().navigateUp()
         }
@@ -54,7 +51,7 @@ class RepositoryDetailsFragment : Fragment(R.layout.fragment_repository_details)
             R.string.number_of_stars_with_value,
             repositoryDetails.starsCount
         )
-        repoTitleText.text = repositoryDetails.title
+        authorEmailText.text = repositoryDetails.title
 
         Glide.with(this)
             .load(repositoryDetails.ownerAvatarUrl)
@@ -84,17 +81,5 @@ class RepositoryDetailsFragment : Fragment(R.layout.fragment_repository_details)
             .show()
         findNavController().navigateUp()
     }
-
-    private fun onLastCommitsLoadStateChanged(state: GetCommitsDetailsState?) {
-        when (state) {
-            is GetCommitsDetailsState.InProgress -> {
-            }
-            is GetCommitsDetailsState.Success -> {
-            }
-            is GetCommitsDetailsState.Error -> {
-            }
-        }
-    }
-
 
 }

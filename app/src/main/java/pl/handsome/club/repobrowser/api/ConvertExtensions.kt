@@ -34,8 +34,8 @@ fun ApiRepositoryDetails.toDomain(): RepositoryDetails {
 
 fun ApiCommitDetails.toDomain(): CommitDetails {
     return CommitDetails(
-        author.name,
-        author.email,
+        commit.author.name,
+        commit.author.email,
         commit.message,
         commit.url
     )
