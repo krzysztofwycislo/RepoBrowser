@@ -29,13 +29,23 @@ class CommitsHistoryListFragment : Fragment(R.layout.fragment_commits_history) {
 
     private fun onLastCommitsLoadStateChanged(state: GetCommitsDetailsState?) {
         when (state) {
-            is GetCommitsDetailsState.InProgress -> { commitsHistoryList.visibility = View.INVISIBLE }
+            is GetCommitsDetailsState.InProgress -> showProgressBar()
             is GetCommitsDetailsState.Success -> initializeView(state.commitsDetails)
             is GetCommitsDetailsState.Error -> { }
         }
     }
 
+    private fun showProgressBar() {
+        commitsHistoryList.visibility = View.INVISIBLE
+        progressBar.visibility = View.VISIBLE
+    }
+
+    private fun hideProgressBar() {
+        progressBar.visibility = View.INVISIBLE
+    }
+
     private fun initializeView(commitsDetails: List<CommitDetails>) {
+        hideProgressBar()
         commitsHistoryList.alpha = 0f
         commitsHistoryList.visibility = View.VISIBLE
 

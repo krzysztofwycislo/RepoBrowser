@@ -3,6 +3,8 @@ package pl.handsome.club.repobrowser.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import okhttp3.Credentials
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import pl.handsome.club.repobrowser.api.GitHubApi
@@ -21,7 +23,7 @@ object ViewModelFactory : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        val viewModel = when(modelClass) {
+        val viewModel = when (modelClass) {
             SearchRepositoryViewModel::class.java -> SearchRepositoryViewModel(githubRepository)
             RepositoryDetailsViewModel::class.java -> RepositoryDetailsViewModel(githubRepository)
             else -> modelClass.newInstance()
@@ -36,6 +38,7 @@ object ViewModelFactory : ViewModelProvider.Factory {
 
         val httpClient = OkHttpClient.Builder()
         httpClient.addInterceptor(logging)
+        httpClient.addInterceptor(basicAuthInterceptor())
 
         val dispatchers = AppCoroutineDispatchers()
         val retrofit = Retrofit.Builder()
@@ -46,6 +49,20 @@ object ViewModelFactory : ViewModelProvider.Factory {
 
         val gitHubApi = retrofit.create(GitHubApi::class.java)
         return GithubRepository(gitHubApi, dispatchers)
+    }
+
+    private fun basicAuthInterceptor(): Interceptor {
+        return Interceptor { chain ->
+            val request= chain.request()
+                .newBuilder()
+                .addHeader(
+                    "Authorization",
+                    "token e358e061071766c549677873020a59cccee7203f"
+                )
+                .build()
+
+            chain.proceed(request)
+        }
     }
 
 }
