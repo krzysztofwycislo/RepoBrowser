@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_repository_details.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import pl.handsome.club.repobrowser.BuildConfig
 import pl.handsome.club.repobrowser.R
 import pl.handsome.club.repobrowser.domain.details.GetRepositoryDetailsState
 import pl.handsome.club.repobrowser.domain.details.RepositoryDetails
@@ -55,11 +54,12 @@ class RepositoryDetailsFragment : Fragment(R.layout.fragment_repository_details)
         )
         authorEmailText.text = repositoryDetails.title
 
-        Glide.with(this)
-            .load(repositoryDetails.ownerAvatarUrl)
-            .centerCrop()
-            .into(authorAvatarImage)
+        loadOwnerAvatarImage(repositoryDetails.ownerAvatarUrl)
 
+        initializeButtons(repositoryDetails)
+    }
+
+    private fun initializeButtons(repositoryDetails: RepositoryDetails) {
         viewOnlineButton.setOnClickListener {
             val url = Uri.parse(repositoryDetails.repositoryUrl)
             val browserIntent = Intent(Intent.ACTION_VIEW, url)
@@ -73,6 +73,13 @@ class RepositoryDetailsFragment : Fragment(R.layout.fragment_repository_details)
             shareIntent.putExtra(Intent.EXTRA_TEXT, repositoryDetails.repositoryUrl)
             startActivity(Intent.createChooser(shareIntent, getString(R.string.choose_one)))
         }
+    }
+
+    private fun loadOwnerAvatarImage(ownerAvatarUrl: String) {
+        Glide.with(this)
+            .load(ownerAvatarUrl)
+            .centerCrop()
+            .into(authorAvatarImage)
     }
 
     private fun showLoadingScreen() {
