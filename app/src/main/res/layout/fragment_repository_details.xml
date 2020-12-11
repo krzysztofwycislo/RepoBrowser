@@ -131,6 +131,7 @@
                 tools:text="Repo Title" />
 
             <Button
+                android:id="@+id/viewOnlineButton"
                 style="@style/ViewOnlineButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -6,5 +6,6 @@ data class RepositoryDetails(
     val ownerId: Long,
     val ownerName: String,
     val ownerAvatarUrl: String,
-    val starsCount: Int
+    val starsCount: Int,
+    val repositoryUrl: String
 )

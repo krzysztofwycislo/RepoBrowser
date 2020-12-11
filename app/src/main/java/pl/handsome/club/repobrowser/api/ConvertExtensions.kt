@@ -28,7 +28,8 @@ fun ApiRepositoryDetails.toDomain(): RepositoryDetails {
         owner.id,
         owner.login,
         owner.avatar_url,
-        stargazers_count
+        stargazers_count,
+        html_url
     )
 }
 

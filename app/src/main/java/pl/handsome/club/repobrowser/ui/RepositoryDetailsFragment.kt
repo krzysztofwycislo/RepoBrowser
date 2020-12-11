@@ -1,5 +1,7 @@
 package pl.handsome.club.repobrowser.ui
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -56,6 +58,11 @@ class RepositoryDetailsFragment : Fragment(R.layout.fragment_repository_details)
             .load(repositoryDetails.ownerAvatarUrl)
             .centerCrop()
             .into(authorAvatarImage)
+
+        viewOnlineButton.setOnClickListener {
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(repositoryDetails.repositoryUrl))
+            startActivity(browserIntent)
+        }
     }
 
     private fun showLoadingScreen() {
