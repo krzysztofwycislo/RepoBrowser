@@ -1,8 +1,8 @@
 package pl.handsome.club.repobrowser.api
 
 import pl.handsome.club.repobrowser.api.commit.ApiCommitDetails
-import pl.handsome.club.repobrowser.api.details.ApiRepositoryDetails
-import pl.handsome.club.repobrowser.api.search.ApiSearchRepository
+import pl.handsome.club.repobrowser.api.repository.details.ApiRepositoryDetails
+import pl.handsome.club.repobrowser.api.repository.search.ApiSearchRepository
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

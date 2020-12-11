@@ -1,4 +1,4 @@
-package pl.handsome.club.repobrowser.api.details
+package pl.handsome.club.repobrowser.api.repository.details
 
 
 data class ApiRepositoryDetailsOwner (

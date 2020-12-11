@@ -1,4 +1,4 @@
-package pl.handsome.club.repobrowser.api.search
+package pl.handsome.club.repobrowser.api.repository.search
 
 
 data class ApiSearchRepository (

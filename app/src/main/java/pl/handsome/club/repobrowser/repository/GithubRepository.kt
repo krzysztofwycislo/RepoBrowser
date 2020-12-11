@@ -6,8 +6,8 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*
 import pl.handsome.club.repobrowser.api.*
 import pl.handsome.club.repobrowser.api.commit.ApiCommitDetails
-import pl.handsome.club.repobrowser.api.details.ApiRepositoryDetails
-import pl.handsome.club.repobrowser.api.search.ApiSearchRepository
+import pl.handsome.club.repobrowser.api.repository.details.ApiRepositoryDetails
+import pl.handsome.club.repobrowser.api.repository.search.ApiSearchRepository
 import pl.handsome.club.repobrowser.domain.details.GetCommitsDetailsState
 import pl.handsome.club.repobrowser.domain.details.GetRepositoryDetailsState
 import pl.handsome.club.repobrowser.domain.search.SearchRepositoriesState

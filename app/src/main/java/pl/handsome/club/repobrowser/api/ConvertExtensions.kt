@@ -1,8 +1,8 @@
 package pl.handsome.club.repobrowser.api
 
 import pl.handsome.club.repobrowser.api.commit.ApiCommitDetails
-import pl.handsome.club.repobrowser.api.details.ApiRepositoryDetails
-import pl.handsome.club.repobrowser.api.search.ApiSearchRepository
+import pl.handsome.club.repobrowser.api.repository.details.ApiRepositoryDetails
+import pl.handsome.club.repobrowser.api.repository.search.ApiSearchRepository
 import pl.handsome.club.repobrowser.domain.details.CommitDetails
 import pl.handsome.club.repobrowser.domain.details.RepositoryDetails
 import pl.handsome.club.repobrowser.domain.search.SearchRepository

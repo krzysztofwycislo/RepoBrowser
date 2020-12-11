@@ -3,9 +3,9 @@ package pl.handsome.club.repobrowser.data
 import pl.handsome.club.repobrowser.api.commit.ApiCommitDetails
 import pl.handsome.club.repobrowser.api.commit.ApiCommitDetailsAuthor
 import pl.handsome.club.repobrowser.api.commit.ApiCommitDetailsCommit
-import pl.handsome.club.repobrowser.api.details.ApiRepositoryDetails
-import pl.handsome.club.repobrowser.api.details.ApiRepositoryDetailsOwner
-import pl.handsome.club.repobrowser.api.search.ApiSearchRepository
+import pl.handsome.club.repobrowser.api.repository.details.ApiRepositoryDetails
+import pl.handsome.club.repobrowser.api.repository.details.ApiRepositoryDetailsOwner
+import pl.handsome.club.repobrowser.api.repository.search.ApiSearchRepository
 import pl.handsome.club.repobrowser.domain.search.SearchRepository
 
 
