@@ -65,6 +65,10 @@ class SearchForRepositoryFragment : Fragment(R.layout.fragment_search_for_reposi
     }
 
     private fun onSearchSuccess(searchRepositories: List<SearchRepository>) {
+        if (searchRepositories.isEmpty()) {
+            Toast.makeText(requireContext(), R.string.repository_search_is_empty, Toast.LENGTH_LONG).show()
+        }
+
         (repositoryRecyclerList.adapter as RepositoryRecyclerListAdapter)
             .submitList(searchRepositories)
     }
@@ -79,7 +83,8 @@ class SearchForRepositoryFragment : Fragment(R.layout.fragment_search_for_reposi
     // but i will leave it this way for simplicity
     private fun showError(throwable: Throwable) {
         logError(throwable)
-        Toast.makeText(requireContext(), R.string.error_something_went_wrong, Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), R.string.error_something_went_wrong, Toast.LENGTH_SHORT)
+            .show()
     }
 
 }

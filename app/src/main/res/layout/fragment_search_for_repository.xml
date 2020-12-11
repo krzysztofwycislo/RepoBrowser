@@ -25,9 +25,9 @@
         android:layout_marginHorizontal="@dimen/small_100"
         android:indeterminateOnly="true"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/repositorySearchEditText"
         app:layout_constraintEnd_toEndOf="@id/repositorySearchEditText"
         app:layout_constraintStart_toStartOf="@id/repositorySearchEditText"
+        app:layout_constraintTop_toBottomOf="@id/repositorySearchEditText"
         tools:visibility="visible" />
 
     <EditText
