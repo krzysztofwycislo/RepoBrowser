@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/searchTitleTextView"
-        style="@style/SearchTitleTextView"
+        style="@style/SearchTitleTextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/large_100"
@@ -32,7 +32,7 @@
 
     <EditText
         android:id="@+id/repositorySearchEditText"
-        style="@style/SearchViewStyle"
+        style="@style/SearchEditTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="36dp"
         android:layout_marginTop="@dimen/small_175"
@@ -46,7 +46,7 @@
 
     <TextView
         android:id="@+id/repositoriesListTitleTextView"
-        style="@style/ListTitleTextView"
+        style="@style/ListTitleTextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"

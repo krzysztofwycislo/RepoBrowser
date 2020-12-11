@@ -74,6 +74,7 @@ class SearchForRepositoryFragment : Fragment(R.layout.fragment_search_for_reposi
         findNavController().safeNavigate(R.id.to_repositoryDetailsFragment)
     }
 
+    // could do some exception - message mapping but i will leave this that way
     private fun showError(throwable: Throwable) {
         logError(throwable)
         Toast.makeText(

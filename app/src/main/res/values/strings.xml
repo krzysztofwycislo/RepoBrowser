@@ -4,4 +4,8 @@
     <string name="repositories">Repositories</string>
     <string name="author_avatar">Author avatar</string>
     <string name="error_something_went_wrong">Something went wrong</string>
+    <string name="back">Back</string>
+    <string name="repo_by">Repo by</string>
+    <string name="view_online">View online</string>
+    <string name="share_repo_button">share repo</string>
 </resources>
