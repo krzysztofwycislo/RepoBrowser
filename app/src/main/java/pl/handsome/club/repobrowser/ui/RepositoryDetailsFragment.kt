@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_repository_details.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import pl.handsome.club.repobrowser.BuildConfig
 import pl.handsome.club.repobrowser.R
 import pl.handsome.club.repobrowser.domain.details.GetRepositoryDetailsState
 import pl.handsome.club.repobrowser.domain.details.RepositoryDetails
@@ -60,8 +61,17 @@ class RepositoryDetailsFragment : Fragment(R.layout.fragment_repository_details)
             .into(authorAvatarImage)
 
         viewOnlineButton.setOnClickListener {
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(repositoryDetails.repositoryUrl))
+            val url = Uri.parse(repositoryDetails.repositoryUrl)
+            val browserIntent = Intent(Intent.ACTION_VIEW, url)
             startActivity(browserIntent)
+        }
+
+        shareRepoButton.setOnClickListener {
+            val shareIntent = Intent(Intent.ACTION_SEND)
+            shareIntent.type = "text/plain"
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, repositoryDetails.title)
+            shareIntent.putExtra(Intent.EXTRA_TEXT, repositoryDetails.repositoryUrl)
+            startActivity(Intent.createChooser(shareIntent, "Choose one"))
         }
     }
 
