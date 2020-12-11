@@ -9,8 +9,10 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 object ApiProvider {
 
-    private const val GITHUB_URL = "https://api.github.com/"
+    // that token has only access to public data and operations so it can stay here
+    // its only purpose is to increase hourly request limit
     private const val GITHUB_AUTH_TOKEN = "e358e061071766c549677873020a59cccee7203f"
+    private const val GITHUB_URL = "https://api.github.com/"
 
     private val githubRetrofit = createGithubRetrofit()
 
