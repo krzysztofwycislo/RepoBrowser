@@ -13,12 +13,19 @@ val someApiSearchRepository = ApiSearchRepository(1, false, emptyList())
 
 val someSearchRepository = SearchRepository(1, "title", 1, "ownerName","url", 5)
 
-private val someRepositoryOwner = ApiRepositoryDetailsOwner(1, "login", "avatar")
-val someApiRepositoryDetails = ApiRepositoryDetails(1, "name", someRepositoryOwner, 5)
+val someRepositoryOwner = ApiRepositoryDetailsOwner(1, "login", "avatar")
 
-private val someApiCommitDetail = ApiCommitDetails(
-    ApiCommitDetailsCommit("url", "message", ApiCommitDetailsAuthor("name", "email"))
+val someApiRepositoryDetails = ApiRepositoryDetails(1, "name", someRepositoryOwner, 5, "url")
+
+val someApiCommitDetailsAuthor = ApiCommitDetailsAuthor("name", "email")
+
+val someApiCommitDetail = ApiCommitDetails(
+    ApiCommitDetailsCommit("url", "message", someApiCommitDetailsAuthor)
 )
 
-val someApiCommitDetails =
-    listOf(someApiCommitDetail, someApiCommitDetail, someApiCommitDetail, someApiCommitDetail)
+val someApiCommitDetails = listOf(
+    someApiCommitDetail,
+    someApiCommitDetail,
+    someApiCommitDetail,
+    someApiCommitDetail
+)
