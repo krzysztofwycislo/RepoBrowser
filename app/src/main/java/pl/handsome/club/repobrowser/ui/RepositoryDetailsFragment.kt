@@ -52,7 +52,7 @@ class RepositoryDetailsFragment : Fragment(R.layout.fragment_repository_details)
             R.string.number_of_stars_with_value,
             repositoryDetails.starsCount
         )
-        authorEmailText.text = repositoryDetails.title
+        repoNameText.text = repositoryDetails.title
 
         loadOwnerAvatarImage(repositoryDetails.ownerAvatarUrl)
 

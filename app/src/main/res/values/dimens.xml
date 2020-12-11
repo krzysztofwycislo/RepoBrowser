@@ -2,27 +2,24 @@
 <resources>
 
     <!--   LAYOUT   -->
+    <dimen name="small_25">2dp</dimen>
     <dimen name="small_50">4dp</dimen>
+    <dimen name="small_75">6dp</dimen>
     <dimen name="small_100">8dp</dimen>
     <dimen name="small_150">12dp</dimen>
     <dimen name="small_175">14dp</dimen>
 
     <dimen name="normal_100">16dp</dimen>
     <dimen name="normal_125">20dp</dimen>
+    <dimen name="normal_150">24dp</dimen>
 
     <dimen name="large_100">30dp</dimen>
     <dimen name="large_125">36dp</dimen>
-
-
-    <!--  TEXT   -->
-    <dimen name="text_small_100">8sp</dimen>
-    <dimen name="text_small_125">10sp</dimen>
-
-    <dimen name="text_regular_100">16sp</dimen>
-    <dimen name="text_regular_125">20sp</dimen>
-
-    <dimen name="text_large_100">34sp</dimen>
+    <dimen name="large_150">42dp</dimen>
+    <dimen name="large_175">48dp</dimen>
 
     <dimen name="author_avatar_corner_radius">10dp</dimen>
+    <dimen name="details_min_author_avatar_height">250dp</dimen>
+    <dimen name="search_author_avatar_size">60dp</dimen>
 
 </resources>

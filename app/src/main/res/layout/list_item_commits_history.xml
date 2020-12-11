@@ -18,20 +18,20 @@
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:background="@drawable/background_light_grey_oval"
+        android:fontFamily="@font/sf_pro_text_semibold"
         android:gravity="center"
         android:textSize="17sp"
-        android:fontFamily="@font/sf_pro_text_semibold"
         app:layout_constraintBottom_toBottomOf="@id/authorEmailText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/authorEmailText"
         tools:text="N" />
 
     <TextView
-        style="@style/CommitsHistoryAuthorNameTextStyle"
         android:id="@+id/repoAuthorNameText"
+        style="@style/CommitsHistoryAuthorNameTextStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
+        android:layout_marginBottom="@dimen/small_25"
         app:layout_constraintBottom_toTopOf="@id/authorEmailText"
         app:layout_constraintEnd_toEndOf="@id/authorEmailText"
         app:layout_constraintStart_toStartOf="@id/textVerticalGuideline"
@@ -39,11 +39,11 @@
         tools:text="COMMIT AUTHOR NAME" />
 
     <TextView
-        style="@style/CommitsHistoryAuthorEmailTextStyle"
         android:id="@+id/authorEmailText"
+        style="@style/CommitsHistoryAuthorEmailTextStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
+        android:layout_marginBottom="@dimen/small_25"
         app:layout_constraintBottom_toTopOf="@id/commitMessageText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/textVerticalGuideline"
@@ -51,8 +51,8 @@
         tools:text="email@authorname.com" />
 
     <TextView
-        style="@style/CommitsHistoryMessageTextStyle"
         android:id="@+id/commitMessageText"
+        style="@style/CommitsHistoryMessageTextStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

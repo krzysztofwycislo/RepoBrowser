@@ -32,21 +32,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_begin="20dp" />
+                app:layout_constraintGuide_begin="@dimen/normal_125" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/endVerticalGuideline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_end="20dp" />
+                app:layout_constraintGuide_end="@dimen/normal_125" />
 
             <ImageView
                 android:id="@+id/authorAvatarImage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/author_avatar"
-                android:minHeight="250dp"
+                android:minHeight="@dimen/details_min_author_avatar_height"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -65,38 +65,38 @@
                 style="@style/BackButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="@dimen/large_100"
                 android:text="@string/back"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                style="@style/RepositoryDetailsRepoByTextStyle"
                 android:id="@+id/repoByText"
+                style="@style/RepositoryDetailsRepoByTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
+                android:layout_marginBottom="@dimen/small_50"
                 android:text="@string/repo_by"
                 app:layout_constraintBottom_toTopOf="@id/repoAuthorNameText"
                 app:layout_constraintStart_toStartOf="@+id/beginVerticalGuideline" />
 
             <TextView
-                style="@style/RepositoryDetailsAuthorNameTextStyle"
                 android:id="@+id/repoAuthorNameText"
+                style="@style/RepositoryDetailsAuthorNameTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="6dp"
+                android:layout_marginBottom="@dimen/small_75"
                 app:layout_constraintBottom_toTopOf="@id/numberOfStarsText"
                 app:layout_constraintStart_toStartOf="@+id/beginVerticalGuideline"
                 tools:text="Repo Author Name" />
 
             <TextView
-                style="@style/RepositoryDetailsStarsTextStyle"
                 android:id="@+id/numberOfStarsText"
+                style="@style/RepositoryDetailsStarsTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="22dp"
-                android:drawablePadding="5dp"
+                android:layout_marginBottom="13sp"
+                android:drawablePadding="@dimen/small_75"
                 app:drawableStartCompat="@drawable/ic_star_icon_filled"
                 app:drawableTint="@color/white_transparent"
                 app:layout_constraintBottom_toBottomOf="@id/authorAvatarImage"
@@ -104,11 +104,11 @@
                 tools:text="Number of Stars (234)" />
 
             <TextView
-                style="@style/RepositoryDetailsRepoNameTextStyle"
                 android:id="@+id/repoNameText"
+                style="@style/RepositoryDetailsRepoNameTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/normal_125"
                 app:layout_constraintStart_toStartOf="@+id/beginVerticalGuideline"
                 app:layout_constraintTop_toBottomOf="@id/authorAvatarImage"
                 tools:text="Repo Title" />
@@ -128,8 +128,8 @@
                 android:name="pl.handsome.club.repobrowser.ui.CommitsHistoryListFragment"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginTop="@dimen/large_150"
+                android:layout_marginBottom="@dimen/normal_150"
                 app:layout_constraintBottom_toTopOf="@+id/shareRepoButton"
                 app:layout_constraintEnd_toEndOf="@+id/endVerticalGuideline"
                 app:layout_constraintStart_toStartOf="@+id/beginVerticalGuideline"
@@ -141,9 +141,9 @@
                 style="@style/ShareRepoButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="44dp"
+                android:layout_marginBottom="@dimen/large_150"
                 android:fontFamily="@font/sf_pro_text_semibold"
-                android:paddingVertical="14dp"
+                android:paddingVertical="@dimen/small_175"
                 android:text="@string/share_repo_button"
                 android:textAllCaps="false"
                 app:layout_constraintBottom_toBottomOf="parent"
