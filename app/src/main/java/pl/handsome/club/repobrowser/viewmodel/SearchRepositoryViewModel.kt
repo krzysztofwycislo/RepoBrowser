@@ -20,7 +20,7 @@ class SearchRepositoryViewModel(
     }
 
     fun search(name: String) {
-        if (name.isEmpty())
+        if (name.isEmpty() || name == partialRepoName.value)
             return
 
         partialRepoName.value = name
