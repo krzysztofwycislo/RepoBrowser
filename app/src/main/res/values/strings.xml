@@ -11,4 +11,5 @@
     <string name="number_of_stars_with_value">Number of Stars (%d)</string>
     <string name="commits_history">Commits history</string>
     <string name="repository_search_is_empty">Repositories not found</string>
+    <string name="choose_one">Choose one</string>
 </resources>

@@ -71,7 +71,7 @@ class RepositoryDetailsFragment : Fragment(R.layout.fragment_repository_details)
             shareIntent.type = "text/plain"
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, repositoryDetails.title)
             shareIntent.putExtra(Intent.EXTRA_TEXT, repositoryDetails.repositoryUrl)
-            startActivity(Intent.createChooser(shareIntent, "Choose one"))
+            startActivity(Intent.createChooser(shareIntent, getString(R.string.choose_one)))
         }
     }
 
