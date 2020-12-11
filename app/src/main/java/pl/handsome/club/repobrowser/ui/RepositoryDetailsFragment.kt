@@ -1,7 +1,100 @@
 package pl.handsome.club.repobrowser.ui
 
+import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.fragment_repository_details.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import pl.handsome.club.repobrowser.R
+import pl.handsome.club.repobrowser.domain.details.GetCommitsDetailsState
+import pl.handsome.club.repobrowser.domain.details.GetRepositoryDetailsState
+import pl.handsome.club.repobrowser.domain.details.RepositoryDetails
+import pl.handsome.club.repobrowser.util.logError
+import pl.handsome.club.repobrowser.viewmodel.RepositoryDetailsViewModel
+import pl.handsome.club.repobrowser.viewmodel.ViewModelFactory
 
 
-class RepositoryDetailsFragment : Fragment(R.layout.fragment_repository_details)
+@ExperimentalCoroutinesApi
+class RepositoryDetailsFragment : Fragment(R.layout.fragment_repository_details) {
+
+    private val repositoryDetailsViewModel: RepositoryDetailsViewModel by activityViewModels { ViewModelFactory }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        repositoryDetailsViewModel.repositoryDetailsLoadState
+            .observe(viewLifecycleOwner, ::onRepositoryDetailsLoadStateChanged)
+
+        repositoryDetailsViewModel.lastCommitsLoadState
+            .observe(viewLifecycleOwner, ::onLastCommitsLoadStateChanged)
+
+        backButton.setOnClickListener {
+            findNavController().navigateUp()
+        }
+    }
+
+    private fun onRepositoryDetailsLoadStateChanged(state: GetRepositoryDetailsState?) {
+        when (state) {
+            is GetRepositoryDetailsState.InProgress -> showLoadingScreen()
+            is GetRepositoryDetailsState.Success -> initializeView(state.repositoryDetails)
+            is GetRepositoryDetailsState.Error -> onLoadStateError(state.throwable)
+        }
+    }
+
+    private fun initializeView(repositoryDetails: RepositoryDetails) {
+        hideLoadingScreen()
+
+        repoAuthorNameText.text = repositoryDetails.ownerName
+        numberOfStarsText.text = getString(
+            R.string.number_of_stars_with_value,
+            repositoryDetails.starsCount
+        )
+        repoTitleText.text = repositoryDetails.title
+
+        Glide.with(this)
+            .load(repositoryDetails.ownerAvatarUrl)
+            .centerCrop()
+            .into(authorAvatarImage)
+    }
+
+    private fun showLoadingScreen() {
+        progressBar.visibility = View.VISIBLE
+        repositoryDetailsContent.visibility = View.GONE
+    }
+
+    private fun hideLoadingScreen() {
+        progressBar.visibility = View.GONE
+        repositoryDetailsContent.alpha = 0f
+        repositoryDetailsContent.visibility = View.VISIBLE
+        repositoryDetailsContent.animate().alpha(1.0f)
+    }
+
+    // we could push it to e.g. ErrorViewModel
+    // then handle it in more generic way by Activity with some exception - message mapping
+    // but i will leave it this way for simplicity
+    private fun onLoadStateError(throwable: Throwable) {
+        hideLoadingScreen()
+        logError(throwable)
+        Toast.makeText(requireContext(), R.string.error_something_went_wrong, Toast.LENGTH_SHORT)
+            .show()
+        findNavController().navigateUp()
+    }
+
+    private fun onLastCommitsLoadStateChanged(state: GetCommitsDetailsState?) {
+        when (state) {
+            is GetCommitsDetailsState.InProgress -> {
+            }
+            is GetCommitsDetailsState.Success -> {
+            }
+            is GetCommitsDetailsState.Error -> {
+            }
+        }
+    }
+
+
+}

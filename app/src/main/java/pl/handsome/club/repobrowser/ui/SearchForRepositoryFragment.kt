@@ -53,7 +53,7 @@ class SearchForRepositoryFragment : Fragment(R.layout.fragment_search_for_reposi
     }
 
     private fun onSearchStateChanged(state: SearchRepositoriesState?) {
-        if(state !is SearchRepositoriesState.InProgress) {
+        if (state !is SearchRepositoriesState.InProgress) {
             progressBar.hide()
         }
 
@@ -74,14 +74,12 @@ class SearchForRepositoryFragment : Fragment(R.layout.fragment_search_for_reposi
         findNavController().safeNavigate(R.id.to_repositoryDetailsFragment)
     }
 
-    // could do some exception - message mapping but i will leave this that way
+    // we could push it to e.g. ErrorViewModel
+    // then handle it in more generic way by Activity with some exception - message mapping
+    // but i will leave it this way for simplicity
     private fun showError(throwable: Throwable) {
         logError(throwable)
-        Toast.makeText(
-            requireContext(),
-            R.string.error_something_went_wrong,
-            Toast.LENGTH_SHORT
-        ).show()
+        Toast.makeText(requireContext(), R.string.error_something_went_wrong, Toast.LENGTH_SHORT).show()
     }
 
 }

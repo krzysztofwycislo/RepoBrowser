@@ -7,7 +7,7 @@ import kotlinx.coroutines.*
 class DebounceTextWatcher(
     private val coroutineScope: CoroutineScope,
     private val onTextChanged: (String) -> Unit,
-    private val debounceDelayMillis: Long = 300
+    private val debounceDelayMillis: Long = 400
 ) : TextWatcher {
 
     private var debounceJob: Job? = null

@@ -38,7 +38,7 @@ class RepositoryRecyclerListAdapter(
         fun bind(searchRepository: SearchRepository) = with(searchRepository) {
             authorAvatarImage.clipToOutline = true // enables rounding to background
             loadImage(ownerAvatarUrl)
-            repoTitleTextView.text = title
+            repoTitleTextView.text = repoName
             starsCountTextView.text = starsCount.toString()
 
             listItemContainer.setOnClickListener { onItemClick(searchRepository) }

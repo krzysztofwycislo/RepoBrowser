@@ -56,21 +56,21 @@ class RepositoryDetailsViewModelTest {
         val githubRepository = GithubRepository(gitHubApi, coroutineRule.testCoroutineDispatchers)
         viewModel = RepositoryDetailsViewModel(githubRepository)
 
-        viewModel.getRepositoryDetailsState.observeForever(observer)
-        viewModel.lastCommits.observeForever(commitsObserver)
+        viewModel.repositoryDetailsLoadState.observeForever(observer)
+        viewModel.lastCommitsLoadState.observeForever(commitsObserver)
     }
 
     @After
     fun cleanup() {
-        viewModel.getRepositoryDetailsState.removeObserver(observer)
-        viewModel.lastCommits.removeObserver(commitsObserver)
+        viewModel.repositoryDetailsLoadState.removeObserver(observer)
+        viewModel.lastCommitsLoadState.removeObserver(commitsObserver)
     }
 
     @Test
     fun `get repository details - success`() = coroutineRule.runBlockingTest {
-        `when`(gitHubApi.getRepository(anyLong(), anyLong()))
+        `when`(gitHubApi.getRepository(anyString(), anyString()))
             .thenReturn(someApiRepositoryDetails)
-        `when`(gitHubApi.getLastCommits(anyLong(), anyLong()))
+        `when`(gitHubApi.getLastCommits(anyString(), anyString()))
             .thenReturn(someApiCommitDetails)
 
         viewModel.getDetails(someSearchRepository)
@@ -92,9 +92,9 @@ class RepositoryDetailsViewModelTest {
         coroutineRule.runBlockingTest {
             val exampleException = IllegalStateException()
 
-            `when`(gitHubApi.getRepository(anyLong(), anyLong()))
+            `when`(gitHubApi.getRepository(anyString(), anyString()))
                 .thenThrow(exampleException)
-            `when`(gitHubApi.getLastCommits(anyLong(), anyLong()))
+            `when`(gitHubApi.getLastCommits(anyString(), anyString()))
                 .thenReturn(someApiCommitDetails)
 
             viewModel.getDetails(someSearchRepository)
@@ -114,9 +114,9 @@ class RepositoryDetailsViewModelTest {
     fun `get repository details - error on commits details`() = coroutineRule.runBlockingTest {
         val exampleException = IllegalStateException()
 
-        `when`(gitHubApi.getRepository(anyLong(), anyLong()))
+        `when`(gitHubApi.getRepository(anyString(), anyString()))
             .thenReturn(someApiRepositoryDetails)
-        `when`(gitHubApi.getLastCommits(anyLong(), anyLong()))
+        `when`(gitHubApi.getLastCommits(anyString(), anyString()))
             .thenThrow(exampleException)
 
         viewModel.getDetails(someSearchRepository)

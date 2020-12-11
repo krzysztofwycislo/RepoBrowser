@@ -11,7 +11,7 @@ import pl.handsome.club.repobrowser.domain.search.SearchRepository
 
 val someApiSearchRepository = ApiSearchRepository(1, false, emptyList())
 
-val someSearchRepository = SearchRepository(1, "title", 1, "url", 5)
+val someSearchRepository = SearchRepository(1, "title", 1, "ownerName","url", 5)
 
 private val someRepositoryOwner = ApiRepositoryDetailsOwner(1, "login", "avatar")
 val someApiRepositoryDetails = ApiRepositoryDetails(1, "name", someRepositoryOwner, 5)

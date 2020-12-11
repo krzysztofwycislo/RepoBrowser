@@ -18,14 +18,14 @@ interface GitHubApi {
 
     @GET("/repos/{owner}/{repo}")
     suspend fun getRepository(
-        @Path("owner") ownerId: Long,
-        @Path("repo") repoId: Long
+        @Path("owner") ownerName: String,
+        @Path("repo") repoName: String
     ): ApiRepositoryDetails
 
     @GET("/repos/{owner}/{repo}/commits")
     suspend fun getLastCommits(
-        @Path("owner") ownerId: Long,
-        @Path("repo") id: Long
+        @Path("owner") ownerName: String,
+        @Path("repo") repoName: String
     ): List<ApiCommitDetails>
 
 }

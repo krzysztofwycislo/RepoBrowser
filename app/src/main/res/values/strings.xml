@@ -8,4 +8,5 @@
     <string name="repo_by">Repo by</string>
     <string name="view_online">View online</string>
     <string name="share_repo_button">share repo</string>
+    <string name="number_of_stars_with_value">Number of Stars (%d)</string>
 </resources>

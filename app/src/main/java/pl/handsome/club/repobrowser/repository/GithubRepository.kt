@@ -34,9 +34,9 @@ class GithubRepository(
             .asLiveData()
     }
 
-    fun getDetails(ownerId: Long, id: Long): LiveData<GetRepositoryDetailsState> {
+    fun getDetails(ownerName: String, repoName: String): LiveData<GetRepositoryDetailsState> {
         return flow<GetRepositoryDetailsState> {
-            val result = gitHubApi.getRepository(ownerId, id)
+            val result = gitHubApi.getRepository(ownerName, repoName)
                 .let(ApiRepositoryDetails::toDomain)
                 .let(GetRepositoryDetailsState::Success)
 
@@ -49,12 +49,12 @@ class GithubRepository(
     }
 
     fun getLastCommits(
-        ownerId: Long,
-        repoId: Long,
+        ownerName: String,
+        repoName: String,
         commitsCount: Int
     ): LiveData<GetCommitsDetailsState> {
         return flow<GetCommitsDetailsState> {
-            val result = gitHubApi.getLastCommits(ownerId, repoId)
+            val result = gitHubApi.getLastCommits(ownerName, repoName)
                 .take(commitsCount)
                 .map(ApiCommitDetails::toDomain)
                 .let(GetCommitsDetailsState::Success)
