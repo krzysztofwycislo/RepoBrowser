@@ -18,6 +18,7 @@
         <item name="android:background">@drawable/background_search_view</item>
         <item name="android:drawableStart">@drawable/ic_search_icon</item>
         <item name="android:drawablePadding">10dp</item>
+        <item name="android:fontFamily">@font/sf_pro_text_regular</item>
     </style>
 
 
@@ -29,6 +30,7 @@
         <item name="android:letterSpacing">0.03</item>
         <item name="android:lineSpacingExtra">41sp</item>
         <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/sf_pro_display_bold</item>
     </style>
 
     <style name="ListTitleTextViewStyle">
@@ -37,14 +39,95 @@
         <item name="android:letterSpacing">0.02</item>
         <item name="android:lineSpacingExtra">6sp</item>
         <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/sf_pro_display_bold</item>
+    </style>
+
+    <style name="RepositoryListItemTitleTextStyle">
+        <item name="android:textSize">17sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:fontFamily">@font/sf_pro_text_semibold</item>
     </style>
 
     <style name="RepositoryListItemTextStyle">
         <item name="android:textSize">17sp</item>
         <item name="android:letterSpacing">-0.02</item>
         <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:fontFamily">@font/sf_pro_text_regular</item>
     </style>
 
+    <style name="RepositoryDetailsRepoByTextStyle">
+        <item name="android:textSize">15sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:fontFamily">@font/sf_pro_text_semibold</item>
+        <item name="android:textColor">@color/white_transparent</item>
+        <item name="android:textStyle">normal</item>
+        <item name="textAllCaps">true</item>
+    </style>
+
+    <style name="RepositoryDetailsAuthorNameTextStyle">
+        <item name="android:textSize">28sp</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:fontFamily">@font/sf_pro_display_bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="RepositoryDetailsStarsTextStyle">
+        <item name="android:textSize">13sp</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:fontFamily">@font/sf_pro_text_regular</item>
+        <item name="android:textColor">@color/white_transparent</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="RepositoryDetailsRepoNameTextStyle">
+        <item name="android:textSize">17sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:fontFamily">@font/sf_pro_text_semibold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="CommitsHistoryTitleTextStyle">
+        <item name="android:textSize">22sp</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:fontFamily">@font/sf_pro_display_bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CommitsHistoryAuthorNameTextStyle">
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:fontFamily">@font/sf_pro_text_semibold</item>
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="CommitsHistoryAuthorEmailTextStyle">
+        <item name="android:textSize">17sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:fontFamily">@font/sf_pro_text_regular</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="CommitsHistoryMessageTextStyle">
+        <item name="android:textSize">17sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:fontFamily">@font/sf_pro_text_regular</item>
+        <item name="android:textColor">#9e9e9e</item>
+        <item name="android:textStyle">normal</item>
+    </style>
 
     <!--    Buttons     -->
 
@@ -57,7 +140,6 @@
         <item name="iconGravity">textStart</item>
         <item name="iconPadding">5dp</item>
         <item name="android:textAllCaps">false</item>
-        <item name="android:textAppearance">@style/ButtonTextAppearance</item>
         <item name="iconTint">@color/white</item>
     </style>
 
@@ -98,10 +180,11 @@
     <!--    Text Appearances     -->
 
     <style name="ButtonTextAppearance" parent="TextAppearance.MaterialComponents.Button">
-        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:letterSpacing">-0.01</item>
         <item name="android:lineSpacingExtra">5sp</item>
         <item name="android:textSize">15sp</item>
         <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">@font/sf_pro_text_semibold</item>
     </style>
 
 

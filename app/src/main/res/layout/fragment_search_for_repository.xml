@@ -8,7 +8,7 @@
     android:paddingHorizontal="@dimen/normal_100">
 
     <TextView
-        android:id="@+id/searchTitleTextView"
+        android:id="@+id/searchTitleText"
         style="@style/SearchTitleTextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,11 +41,11 @@
         android:paddingHorizontal="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchTitleTextView"
+        app:layout_constraintTop_toBottomOf="@+id/searchTitleText"
         tools:ignore="LabelFor" />
 
     <TextView
-        android:id="@+id/repositoriesListTitleTextView"
+        android:id="@+id/repositoriesListTitleText"
         style="@style/ListTitleTextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
         android:layout_marginTop="18dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/repositoriesListTitleTextView"
+        app:layout_constraintTop_toBottomOf="@+id/repositoriesListTitleText"
         tools:listitem="@layout/list_item_repository" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

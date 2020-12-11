@@ -7,7 +7,7 @@
     <string name="back">Back</string>
     <string name="repo_by">Repo by</string>
     <string name="view_online">View online</string>
-    <string name="share_repo_button">share repo</string>
+    <string name="share_repo_button">Share Repo</string>
     <string name="number_of_stars_with_value">Number of Stars (%d)</string>
     <string name="commits_history">Commits history</string>
     <string name="repository_search_is_empty">Repositories not found</string>

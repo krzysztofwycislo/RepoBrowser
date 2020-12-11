@@ -71,45 +71,32 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                style="@style/RepositoryDetailsRepoByTextStyle"
                 android:id="@+id/repoByText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
-                android:letterSpacing="-0.02"
-                android:lineSpacingExtra="5sp"
                 android:text="@string/repo_by"
-                android:textAllCaps="true"
-                android:textColor="@color/white_transparent"
-                android:textSize="15sp"
-                android:textStyle="normal"
                 app:layout_constraintBottom_toTopOf="@id/repoAuthorNameText"
                 app:layout_constraintStart_toStartOf="@+id/beginVerticalGuideline" />
 
             <TextView
+                style="@style/RepositoryDetailsAuthorNameTextStyle"
                 android:id="@+id/repoAuthorNameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
-                android:letterSpacing="0.01"
-                android:lineSpacingExtra="6sp"
-                android:textColor="@color/white"
-                android:textSize="28sp"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@id/numberOfStarsText"
                 app:layout_constraintStart_toStartOf="@+id/beginVerticalGuideline"
                 tools:text="Repo Author Name" />
 
             <TextView
+                style="@style/RepositoryDetailsStarsTextStyle"
                 android:id="@+id/numberOfStarsText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="22dp"
                 android:drawablePadding="5dp"
-                android:letterSpacing="-0.01"
-                android:lineSpacingExtra="5sp"
-                android:textColor="@color/white_transparent"
-                android:textSize="13sp"
-                android:textStyle="normal"
                 app:drawableStartCompat="@drawable/ic_star_icon_filled"
                 app:drawableTint="@color/white_transparent"
                 app:layout_constraintBottom_toBottomOf="@id/authorAvatarImage"
@@ -117,15 +104,11 @@
                 tools:text="Number of Stars (234)" />
 
             <TextView
-                android:id="@+id/authorEmailText"
+                style="@style/RepositoryDetailsRepoNameTextStyle"
+                android:id="@+id/repoNameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:letterSpacing="-0.02"
-                android:lineSpacingExtra="5sp"
-                android:textColor="#000000"
-                android:textSize="17sp"
-                android:textStyle="normal"
                 app:layout_constraintStart_toStartOf="@+id/beginVerticalGuideline"
                 app:layout_constraintTop_toBottomOf="@id/authorAvatarImage"
                 tools:text="Repo Title" />
@@ -136,9 +119,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/view_online"
-                app:layout_constraintBottom_toBottomOf="@id/authorEmailText"
+                app:layout_constraintBottom_toBottomOf="@id/repoNameText"
                 app:layout_constraintEnd_toEndOf="@+id/endVerticalGuideline"
-                app:layout_constraintTop_toTopOf="@id/authorEmailText" />
+                app:layout_constraintTop_toTopOf="@id/repoNameText" />
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/commitsFragment"
@@ -150,7 +133,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/shareRepoButton"
                 app:layout_constraintEnd_toEndOf="@+id/endVerticalGuideline"
                 app:layout_constraintStart_toStartOf="@+id/beginVerticalGuideline"
-                app:layout_constraintTop_toBottomOf="@id/authorEmailText"
+                app:layout_constraintTop_toBottomOf="@id/repoNameText"
                 tools:layout="@layout/fragment_commits_history" />
 
             <Button
@@ -159,8 +142,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="44dp"
+                android:fontFamily="@font/sf_pro_text_semibold"
                 android:paddingVertical="14dp"
                 android:text="@string/share_repo_button"
+                android:textAllCaps="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/endVerticalGuideline"
                 app:layout_constraintStart_toStartOf="@+id/beginVerticalGuideline" />
