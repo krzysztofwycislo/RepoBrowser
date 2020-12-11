@@ -16,7 +16,7 @@ fun ApiSearchRepository.toDomain(): List<SearchRepository> {
             it.owner.id,
             it.owner.login,
             it.owner.avatar_url,
-            it.stargazers_count // TODO verify
+            it.stargazers_count
         )
     }
 }
@@ -28,7 +28,7 @@ fun ApiRepositoryDetails.toDomain(): RepositoryDetails {
         owner.id,
         owner.login,
         owner.avatar_url,
-        stargazers_count // TODO verify
+        stargazers_count
     )
 }
 

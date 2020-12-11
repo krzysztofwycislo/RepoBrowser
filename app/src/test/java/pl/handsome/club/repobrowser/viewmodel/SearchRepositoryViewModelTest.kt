@@ -12,7 +12,6 @@ import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
 import pl.handsome.club.repobrowser.api.GitHubApi
-import pl.handsome.club.repobrowser.api.search.ApiSearchRepository
 import pl.handsome.club.repobrowser.api.toDomain
 import pl.handsome.club.repobrowser.data.someApiSearchRepository
 import pl.handsome.club.repobrowser.domain.search.SearchRepositoriesState

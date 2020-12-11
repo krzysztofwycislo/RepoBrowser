@@ -10,7 +10,6 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_repository_details.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import pl.handsome.club.repobrowser.R
-import pl.handsome.club.repobrowser.domain.details.GetCommitsDetailsState
 import pl.handsome.club.repobrowser.domain.details.GetRepositoryDetailsState
 import pl.handsome.club.repobrowser.domain.details.RepositoryDetails
 import pl.handsome.club.repobrowser.util.logError

@@ -17,8 +17,7 @@ private val someRepositoryOwner = ApiRepositoryDetailsOwner(1, "login", "avatar"
 val someApiRepositoryDetails = ApiRepositoryDetails(1, "name", someRepositoryOwner, 5)
 
 private val someApiCommitDetail = ApiCommitDetails(
-    ApiCommitDetailsCommit("url", "message"),
-    ApiCommitDetailsAuthor("name", "email")
+    ApiCommitDetailsCommit("url", "message", ApiCommitDetailsAuthor("name", "email"))
 )
 
 val someApiCommitDetails =
