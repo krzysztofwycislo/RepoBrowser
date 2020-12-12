@@ -50,6 +50,7 @@ class SearchForRepositoryFragment : Fragment(R.layout.fragment_search_for_reposi
             searchRepositoryViewModel::search
         )
         repositorySearchEditText.addTextChangedListener(debounceTextWatcher)
+        repositorySearchEditText.text.append(getString(R.string.initial_search_query))
     }
 
     private fun onSearchStateChanged(state: SearchRepositoriesState?) {
